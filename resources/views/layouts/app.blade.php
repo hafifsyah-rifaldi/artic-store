@@ -9,7 +9,6 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     {{-- yield menyimpan satu tempat untuk section --}}
-    {{-- ARTiC - Shop for Arts & Creative Goods --}}
     <title>@yield('title')</title>
 
     {{-- Style --}}

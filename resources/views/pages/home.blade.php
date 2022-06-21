@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Store Homepage
+    ARTiC - Shop for Arts & Creative Goods
 @endsection
 
 @section('content')
