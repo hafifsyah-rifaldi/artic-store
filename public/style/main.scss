@@ -1,0 +1,22 @@
+// Import Bootstrap 4 Library
+@import "../vendor/bootstrap/scss/bootstrap.scss";
+
+@import "global"; // Import pada folder pages/_global.scss
+@import "fonts"; // Import pada folder pages/_fonts.scss
+@import "navbar"; // Import pada folder pages/_navbar.scss
+
+@import "pages/home"; // Import pada folder pages/_home.scss
+@import "pages/details"; // Import pada folder pages/_details.scss
+@import "pages/cart"; // Import pada folder pages/_cart.scss
+@import "pages/success"; // Import pada folder pages/_success.scss
+@import "pages/auth"; // Import pada folder pages/_auth.scss
+@import "pages/dashboard"; // Import pada folder pages/_dashboard.scss
+
+@import "components/categories"; // Import pada folder components/_categories.scss
+@import "components/products"; // Import pada folder components/_products.scss
+@import "components/breadcrumbs"; // Import pada folder components/_breadcrumbs.scss
+@import "components/card"; // Import pada folder components/_card.scss
+@import "components/card_list"; // Import pada folder components/_card_list.scss
+@import "components/card_dashboard"; // Import pada folder components/_card_dashboard.scss
+
+@import "transitions/slide-fade"; // Import pada folder transitions/_slide-fade.scss
