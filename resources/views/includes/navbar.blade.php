@@ -4,7 +4,7 @@
     data-aos="fade-down"
 >
     <div class="container">
-    <a href="/index.html" class="navbar-brand">
+    <a href="{{ route('home') }}" class="navbar-brand">
         <img src="/images/logo.svg" alt="Logo" />
     </a>
     <button
@@ -18,11 +18,11 @@
 
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a href="/index.html" class="nav-link">Home</a>
+        <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-            <a href="/categories.html" class="nav-link">Categories</a>
+            <a href="{{ route('categories') }}" class="nav-link">Categories</a>
         </li>
         <li class="nav-item">
             <a href="/register.html" class="nav-link">Sign Up</a>
