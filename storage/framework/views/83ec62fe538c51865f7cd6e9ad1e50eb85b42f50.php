@@ -13,8 +13,8 @@
               <img src="/images/success.svg" alt="" class="mb-4" />
               <h2>Transaction Processed!</h2>
               <p>
-                Silahkan tunggu konfirmasi email dari kami dan kami akan
-                menginformasikan resi secepat mungkin!
+                Harap menunggu konfirmasi email dari kami<br>
+                Resi akan diinformasikan segera mungkin 
               </p>
               <div>
                 <a href="/dashboard.html" class="btn btn-success w-50 mt-4">
