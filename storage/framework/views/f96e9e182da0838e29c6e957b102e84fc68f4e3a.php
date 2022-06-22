@@ -9,14 +9,14 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>@yield('title')</title>
+    <title><?php echo $__env->yieldContent('title'); ?></title>
 
-    @stack('prepend-style')
+    <?php echo $__env->yieldPushContent('prepend-style'); ?>
         <!-- Animasi Website https://michalsnik.github.io/aos/ -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
         <link href="style/main.css" rel="stylesheet" />
         <link rel="shortcut icon" href="/images/shortcut-icon-logo.png" />
-    @stack('addon-style')
+    <?php echo $__env->yieldPushContent('addon-style'); ?>
   </head>
 
   <body>
@@ -140,8 +140,8 @@
             </div>
           </nav>
 
-          {{-- Content --}}
-          @yield('content')
+          
+          <?php echo $__env->yieldContent('content'); ?>
 
         </div>
         <!-- /#page-content-wrapper -->
@@ -149,7 +149,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    @stack('prepend-script')
+    <?php echo $__env->yieldPushContent('prepend-script'); ?>
     <script src="/vendor/jquery/jquery.slim.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -162,6 +162,7 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
-    @stack('addon-script')
+    <?php echo $__env->yieldPushContent('addon-script'); ?>
   </body>
 </html>
+<?php /**PATH C:\laragon\www\artic-store\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>
