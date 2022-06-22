@@ -4,7 +4,7 @@
       data-aos="fade-down"
     >
       <div class="container">
-        <a href="{{ url('home') }}" class="navbar-brand">
+        <a href="<?php echo e(url('home')); ?>" class="navbar-brand">
           <img src="/images/logo.svg" alt="Logo" />
         </a>
         <button
@@ -19,12 +19,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="{{ url('home') }}" class="nav-link">Home</a>
+              <a href="<?php echo e(url('home')); ?>" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('categories') }}" class="nav-link">Categories</a>
+              <a href="<?php echo e(url('categories')); ?>" class="nav-link">Categories</a>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
+    </nav><?php /**PATH C:\laragon\www\artic-store\resources\views/includes/navbar-auth.blade.php ENDPATH**/ ?>
