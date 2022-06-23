@@ -25,11 +25,11 @@
             <a href="<?php echo e(route('categories')); ?>" class="nav-link">Categories</a>
         </li>
         <li class="nav-item">
-            <a href="/register.html" class="nav-link">Sign Up</a>
+            <a href="<?php echo e(route('register')); ?>" class="nav-link">Sign Up</a>
         </li>
         <li class="nav-item">
             <a
-            href="/login.html"
+            href="<?php echo e(route('login')); ?>"
             class="btn btn-success nav-link px-4 text-white"
             >Login</a
             >
