@@ -14,7 +14,7 @@ class DeleteResiFieldAtTransactionsTable extends Migration
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-             $table->dropColumn('resi');
+             $table->dropColumn('resi'); //delete kolom resi
         });
     }
 
@@ -26,7 +26,7 @@ class DeleteResiFieldAtTransactionsTable extends Migration
     public function down()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->string('resi');
+            $table->string('resi'); 
         });
     }
 }
