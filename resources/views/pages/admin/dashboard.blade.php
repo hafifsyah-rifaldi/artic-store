@@ -22,7 +22,7 @@ data-aos="fade-up"
         <div class="card mb-2">
             <div class="card-body">
             <div class="dashboard-card-title">Customer</div>
-            <div class="dashboard-card-subtitle">15</div>
+            <div class="dashboard-card-subtitle"> {{ $customer }} </div>
             </div>
         </div>
         </div>
@@ -30,7 +30,7 @@ data-aos="fade-up"
         <div class="card mb-2">
             <div class="card-body">
             <div class="dashboard-card-title">Revenue</div>
-            <div class="dashboard-card-subtitle">Rp. 450.000</div>
+            <div class="dashboard-card-subtitle">Rp. {{ $revenue }} </div>
             </div>
         </div>
         </div>
@@ -38,7 +38,7 @@ data-aos="fade-up"
         <div class="card mb-2">
             <div class="card-body">
             <div class="dashboard-card-title">Transaction</div>
-            <div class="dashboard-card-subtitle">15</div>
+            <div class="dashboard-card-subtitle">{{ $transaction }} </div>
             </div>
         </div>
         </div>
