@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    ARTiC - Admin Panel
+    ARTiC - Admin Dashboard
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
