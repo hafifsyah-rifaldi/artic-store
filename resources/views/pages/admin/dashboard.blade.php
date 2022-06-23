@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    ARTiC - Admin Panel
+    ARTiC - Admin Dashboard
 @endsection
 
 @section('content')
