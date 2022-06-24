@@ -16,6 +16,7 @@
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
         <link href="/style/main.css" rel="stylesheet" />
         <link rel="shortcut icon" href="/images/shortcut-icon-logo.png" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
     @stack('addon-style')
   </head>
 
@@ -29,7 +30,7 @@
           </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard.html"
+              href="{{ route('admin-dashboard') }}"
               class="list-group-item list-group-item-action"
             >
               Dashboard
@@ -137,8 +138,9 @@
 
     <!-- Bootstrap core JavaScript -->
     @stack('prepend-script')
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
