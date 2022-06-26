@@ -1,10 +1,10 @@
-@extends('layouts.admin')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
     ARTiC - Admin Product
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Section Content -->
 <div
 class="section-content section-dashboard-home"
@@ -18,19 +18,19 @@ data-aos="fade-up"
     <div class="dashboard-content">
         <div class="row">
             <div class="col-md-12">
-                @if($errors->any())
+                <?php if($errors->any()): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
-                @endif
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        <form action="<?php echo e(route('product.store')); ?>" method="POST" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -42,9 +42,9 @@ data-aos="fade-up"
                                     <div class="form-group">
                                         <label>Product User</label>
                                         <select name="users_id" class="form-control">
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>
@@ -52,9 +52,9 @@ data-aos="fade-up"
                                     <div class="form-group">
                                         <label>Product Category</label>
                                         <select name="categories_id" class="form-control">
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>
@@ -86,11 +86,12 @@ data-aos="fade-up"
     </div>
 </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('addon-script')
+<?php $__env->startPush('addon-script'); ?>
     <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
     <script>
             CKEDITOR.replace('editor');
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\artic-store\resources\views/pages/admin/product/create.blade.php ENDPATH**/ ?>
