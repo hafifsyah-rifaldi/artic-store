@@ -36,8 +36,8 @@
               Dashboard
             </a>
             <a
-              href="#"
-              class="list-group-item list-group-item-action"
+              href="<?php echo e(route('product.index')); ?>"
+              class="list-group-item list-group-item-action  <?php echo e((request()->is('admin/product*')) ? 'active' : ''); ?>"
             >
               Products
             </a>
