@@ -54,7 +54,7 @@
               Transactions
             </a>
              <a
-              href="#"
+              href="<?php echo e(route('user.index')); ?>"
               class="list-group-item list-group-item-action"
             >
               Users
