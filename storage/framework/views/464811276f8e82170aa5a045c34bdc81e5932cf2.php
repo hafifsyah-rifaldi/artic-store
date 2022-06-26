@@ -1,10 +1,10 @@
-@extends('layouts.admin')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
     ARTiC - Admin User
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Section Content -->
 <div
 class="section-content section-dashboard-home"
@@ -18,31 +18,31 @@ data-aos="fade-up"
     <div class="dashboard-content">
         <div class="row">
             <div class="col-md-12">
-                @if($errors->any())
+                <?php if($errors->any()): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
-                @endif
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                            @method('PUT')
-                            @csrf
+                        <form action="<?php echo e(route('user.update', $item->id)); ?>" method="POST" enctype="multipart/form-data">
+                            <?php echo method_field('PUT'); ?>
+                            <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>User Name</label>
-                                        <input type="text" name="name" class="form-control" required value="{{ $item->name }}">
+                                        <input type="text" name="name" class="form-control" required value="<?php echo e($item->name); ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>User Email</label>
-                                        <input type="email" name="email" class="form-control" required value="{{ $item->email }}">
+                                        <input type="email" name="email" class="form-control" required value="<?php echo e($item->email); ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -56,7 +56,7 @@ data-aos="fade-up"
                                     <div class="form-group">
                                         <label>Roles</label>
                                         <select name="roles" required class="form-control">
-                                            <option value="{{ $item->roles }}" selected>Tidak diganti</option>
+                                            <option value="<?php echo e($item->roles); ?>" selected>Tidak diganti</option>
                                             <option value="ADMIN">Admin</option>
                                             <option value="USER">User</option>
                                         </select>
@@ -78,4 +78,6 @@ data-aos="fade-up"
     </div>
 </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\artic-store\resources\views/pages/admin/user/edit.blade.php ENDPATH**/ ?>
