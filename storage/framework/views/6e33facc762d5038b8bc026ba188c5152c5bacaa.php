@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('title'); ?>
-    ARTiC - Admin User
+    ARTiC - Admin Product
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -12,8 +12,8 @@ data-aos="fade-up"
 >
 <div class="container-fluid">
     <div class="dashboard-heading">
-    <h2 class="dashboard-title">Admin User</h2>
-    <p class="dashboard-subtitle">Edit User</p>
+    <h2 class="dashboard-title">Admin Product</h2>
+    <p class="dashboard-subtitle">Edit Product</p>
     </div>
     <div class="dashboard-content">
         <div class="row">
@@ -29,37 +29,48 @@ data-aos="fade-up"
                 <?php endif; ?>
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?php echo e(route('user.update', $item->id)); ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?php echo e(route('product.update', $item->id)); ?>" method="POST" enctype="multipart/form-data">
                             <?php echo method_field('PUT'); ?>
                             <?php echo csrf_field(); ?>
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>User Name</label>
-                                        <input type="text" name="name" class="form-control" required value="<?php echo e($item->name); ?>">
+                                        <label>Product Name</label>
+                                        <input type="text" name="name" class="form-control" value="<?php echo e($item->name); ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>User Email</label>
-                                        <input type="email" name="email" class="form-control" required value="<?php echo e($item->email); ?>">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>User Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                        <small>Kosongkan jika tidak ingin mengganti password</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Roles</label>
-                                        <select name="roles" required class="form-control">
-                                            <option value="<?php echo e($item->roles); ?>" selected>Tidak diganti</option>
-                                            <option value="ADMIN">Admin</option>
-                                            <option value="USER">User</option>
+                                        <label>Product User</label>
+                                        <select name="users_id" class="form-control">
+                                            <option value="<?php echo e($item->users_id); ?>" selected><?php echo e($item->user->name); ?></option>
+                                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product Category</label>
+                                        <option value="<?php echo e($item->categories_id); ?>" selected><?php echo e($item->category->name); ?></option>
+                                        <select name="categories_id" class="form-control">
+                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product Price</label>
+                                        <input type="number" name="price" class="form-control" value="<?php echo e($item->price); ?>" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product Description</label>
+                                        <textarea name="description" id="editor"><?php echo $item->description; ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -80,4 +91,10 @@ data-aos="fade-up"
 </div>
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startPush('addon-script'); ?>
+    <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+    <script>
+            CKEDITOR.replace('editor');
+    </script>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\artic-store\resources\views/pages/admin/product/edit.blade.php ENDPATH**/ ?>

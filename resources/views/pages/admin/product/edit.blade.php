@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    ARTiC - Admin User
+    ARTiC - Admin Product
 @endsection
 
 @section('content')
@@ -12,8 +12,8 @@ data-aos="fade-up"
 >
 <div class="container-fluid">
     <div class="dashboard-heading">
-    <h2 class="dashboard-title">Admin User</h2>
-    <p class="dashboard-subtitle">Edit User</p>
+    <h2 class="dashboard-title">Admin Product</h2>
+    <p class="dashboard-subtitle">Edit Product</p>
     </div>
     <div class="dashboard-content">
         <div class="row">
@@ -29,37 +29,48 @@ data-aos="fade-up"
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('product.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>User Name</label>
-                                        <input type="text" name="name" class="form-control" required value="{{ $item->name }}">
+                                        <label>Product Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ $item->name }}" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>User Email</label>
-                                        <input type="email" name="email" class="form-control" required value="{{ $item->email }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>User Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                        <small>Kosongkan jika tidak ingin mengganti password</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Roles</label>
-                                        <select name="roles" required class="form-control">
-                                            <option value="{{ $item->roles }}" selected>Tidak diganti</option>
-                                            <option value="ADMIN">Admin</option>
-                                            <option value="USER">User</option>
+                                        <label>Product User</label>
+                                        <select name="users_id" class="form-control">
+                                            <option value="{{ $item->users_id }}" selected>{{ $item->user->name }}</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product Category</label>
+                                        <option value="{{ $item->categories_id }}" selected>{{ $item->category->name }}</option>
+                                        <select name="categories_id" class="form-control">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product Price</label>
+                                        <input type="number" name="price" class="form-control" value="{{ $item->price }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product Description</label>
+                                        <textarea name="description" id="editor">{!! $item->description !!}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -79,3 +90,10 @@ data-aos="fade-up"
 </div>
 </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+    <script>
+            CKEDITOR.replace('editor');
+    </script>
+@endpush
