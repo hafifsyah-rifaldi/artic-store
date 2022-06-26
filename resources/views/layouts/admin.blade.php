@@ -55,7 +55,7 @@
             </a>
              <a
               href="{{ route('user.index') }}"
-              class="list-group-item list-group-item-action"
+              class="list-group-item list-group-item-action  {{ (request()->is('admin/user*')) ? 'active' : '' }}"
             >
               Users
             </a>
