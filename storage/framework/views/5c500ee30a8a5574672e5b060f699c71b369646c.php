@@ -37,9 +37,15 @@
             </a>
             <a
               href="<?php echo e(route('product.index')); ?>"
-              class="list-group-item list-group-item-action  <?php echo e((request()->is('admin/product*')) ? 'active' : ''); ?>"
+              class="list-group-item list-group-item-action  <?php echo e((request()->is('admin/product')) ? 'active' : ''); ?>"
             >
               Products
+            </a>
+            <a
+              href="<?php echo e(route('product-gallery.index')); ?>"
+              class="list-group-item list-group-item-action  <?php echo e((request()->is('admin/product-gallery*')) ? 'active' : ''); ?>"
+            >
+              Galleries
             </a>
              <a
               href="<?php echo e(route('category.index')); ?>"
