@@ -63,7 +63,7 @@
             </div>
             <div class="row">
             <div
-                class="col-6 offset-md-2 col-md-4 col-lg-2"
+                class="col-6 col-md-3 col-lg-2"
                 data-aos="fade-up"
                 data-aos-delay="100"
             >
@@ -79,7 +79,7 @@
                 </a>
             </div>
             <div
-                class="col-6 col-md-4 col-lg-2"
+                class="col-6 col-md-3 col-lg-2"
                 data-aos="fade-up"
                 data-aos-delay="200"
             >
@@ -95,7 +95,7 @@
                 </a>
             </div>
             <div
-                class="col-6 col-md-4 col-lg-2"
+                class="col-6 col-md-3 col-lg-2"
                 data-aos="fade-up"
                 data-aos-delay="300"
             >
@@ -111,9 +111,41 @@
                 </a>
             </div>
             <div
-                class="col-6 col-md-4 col-lg-2"
+                class="col-6 col-md-3 col-lg-2"
                 data-aos="fade-up"
                 data-aos-delay="400"
+            >
+                <a href="#" class="component-categories d-block">
+                <div class="categories-image">
+                    <img
+                    src="/images/categories-creativeservices.svg"
+                    alt=""
+                    class="w-100"
+                    />
+                </div>
+                <p class="categories-text">Creative Services</p>
+                </a>
+            </div>
+            <div
+                class="col-6 col-md-3 col-lg-2"
+                data-aos="fade-up"
+                data-aos-delay="500"
+            >
+                <a href="#" class="component-categories d-block">
+                <div class="categories-image">
+                    <img
+                    src="/images/categories-creativeservices.svg"
+                    alt=""
+                    class="w-100"
+                    />
+                </div>
+                <p class="categories-text">Creative Services</p>
+                </a>
+            </div>
+            <div
+                class="col-6 col-md-3 col-lg-2"
+                data-aos="fade-up"
+                data-aos-delay="600"
             >
                 <a href="#" class="component-categories d-block">
                 <div class="categories-image">
