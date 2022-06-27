@@ -129,8 +129,7 @@
 
                                 </div>
                                 <div class="products-price">
-                                    Rp.<?php echo e($product->price); ?>
-
+                                    Rp. <?php echo number_format($product->price,0,',','.'); ?>
                                 </div>
                             </a>
                         </div>

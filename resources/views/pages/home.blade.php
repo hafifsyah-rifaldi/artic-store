@@ -127,7 +127,7 @@
                                    {{ $product->name }}
                                 </div>
                                 <div class="products-price">
-                                    Rp.{{ $product->price }}
+                                    @currency($product->price)
                                 </div>
                             </a>
                         </div>
