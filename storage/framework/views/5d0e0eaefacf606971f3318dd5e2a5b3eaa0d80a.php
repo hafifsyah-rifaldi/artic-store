@@ -1,45 +1,87 @@
 <?php $__env->startSection('content'); ?>
 <div class="page-content page-auth">
     <div class="section-store-auth" data-aos="fade-up">
-    <div class="container">
-        <div class="row align-items-center row-login">
-        <div class="col-lg-6 text-center">
-            <img
-            src="/images/login-placeholder.png"
-            alt=""
-            class="w-50 mb-4 mb-lg-none"
-            />
-        </div>
-        <div class="col-lg-5">
-            <h2>
-            Find Things You'll Love <br />
-            Support Local Artists
-            </h2>
-            <form action="" class="mt-3">
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="email" class="form-control w-75" />
+        <div class="container">
+            <div class="row align-items-center row-login">
+                <div class="col-lg-6 text-center">
+                    <img
+                        src="/images/login-placeholder.png"
+                        alt=""
+                        class="w-50 mb-4 mb-lg-none"
+                    />
+                </div>
+                <div class="col-lg-5">
+                    <h2>
+                        Find Things You'll Love <br />
+                        Support Local Artists
+                    </h2>
+                     <form method="POST" action="<?php echo e(route('login')); ?>" class="mt-3">
+                        <?php echo csrf_field(); ?>
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input id="email" type="email" class="form-control w-75 <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
+                            
+                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input id="password" type="password" class="form-control w-75 <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="current-password">
+                            
+                            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-block w-75 mt-4"
+                        >
+                            Login to My Account
+                        </button>
+                        <a
+                            href="<?php echo e(route('register')); ?>"
+                            class="btn btn-signup btn-block w-75 mt-2"
+                        >
+                            Sign Up
+                        </a>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control w-75" />
-            </div>
-            <a
-                href="/dashboard.html"
-                class="btn btn-success btn-block w-75 mt-4"
-            >
-                Login to My Account
-            </a>
-            <a
-                href="/register.html"
-                class="btn btn-signup btn-block w-75 mt-2"
-            >
-                Sign Up
-            </a>
-            </form>
         </div>
-        </div>
-    </div>
     </div>
 </div>
 
