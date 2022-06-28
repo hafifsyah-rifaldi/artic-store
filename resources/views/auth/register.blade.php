@@ -34,9 +34,12 @@
                             <label>E-mail</label>
                             <input id="email"
                                 v-model="email"
+                                @change="checkForEmailAvailability()"
                                 type="email" 
                                 class="form-control @error('email') is-invalid @enderror" 
-                                name="email" value="{{ old('email') }}" 
+                                :class="{ 'is-invalid' : this.email_unavailable }"
+                                name="email" 
+                                value="{{ old('email') }}" 
                                 required 
                                 autocomplete="email">
                             @error('email')
@@ -137,6 +140,7 @@
                         <button
                             type="submit"
                             class="btn btn-success btn-block mt-4"
+                            :disabled="this.email_unavailable"
                         >
                             Sign Up Now
                         </button>
@@ -154,6 +158,7 @@
 @push('addon-script')
     <script src="/vendor/vue/vue.js"></script>
     <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       Vue.use(Toasted);
 
@@ -161,21 +166,52 @@
         el: "#register",
         mounted() {
           AOS.init();
-            this.$toasted.error(
-                "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
-                {
-                position: "top-center",
-                className: "rounded",
-                duration: 1000,
-                }
-            );
         },
-        data: {
-          name: "Hafifsyah Rifaldi",
-          email: "hafifsyah@live.id",
-          password: "",
-          is_store_open: true,
-          store_name: "",
+        methods: {
+            checkForEmailAvailability: function() {
+                var self = this;
+                axios.get('{{ route('api-register-check') }}', {
+                    params: {
+                        email: this.email
+                    }
+                })
+                    .then(function (response) {
+                        if(response.data == 'Available') {
+                            self.$toasted.show(
+                                "Email anda tersedia! Silahkan ke langkah selanjutnya!",
+                                {
+                                position: "top-center",
+                                className: "rounded",
+                                duration: 1000,
+                                }
+                            );
+                            self.email_unavailable = false;
+
+                        } else {
+                            self.$toasted.error(
+                                "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
+                                {
+                                position: "top-center",
+                                className: "rounded",
+                                duration: 1000,
+                                }
+                            );
+                            self.email_unavailable = true;
+                        }
+
+                        // handle success
+                        console.log(response);
+                    });
+            }
+        },
+        data() {
+            return {
+                name: "Hafifsyah Rifaldi",
+                email: "hafifsyah@live.id",
+                is_store_open: true,
+                store_name: "",
+                email_unavailable: false
+            }
         },
       });
     </script>
