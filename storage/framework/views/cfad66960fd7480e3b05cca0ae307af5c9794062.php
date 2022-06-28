@@ -7,78 +7,42 @@
 <?php $__env->startSection('content'); ?>
 <!-- Page Categories -->
     <div class="page-content page-home">
-
       <section class="store-trend-categories">
         <div class="container">
-          <div class="row">
+          <div class="row">       
             <div class="col-12" data-aos="fade-up">
               <h5>All Categories</h5>
             </div>
           </div>
           <div class="row">
-            <div
-              class="col-6 offset-md-2 col-md-4 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <a href="#" class="component-categories d-block">
-                <div class="categories-image">
-                  <img
-                    src="/images/categories-artpainting.svg"
-                    alt=""
-                    class="w-100"
-                  />
+            <?php $incrementCategory = 0 ?>
+            <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <div
+                    class="col-6 col-md-3 col-lg-2"
+                    data-aos="fade-up"
+                    data-aos-delay="<?php echo e($incrementCategory+= 100); ?>"
+                >
+                    <a href="<?php echo e(route('categories-detail', $category->slug)); ?>" class="component-categories d-block">
+                        <div class="categories-image">
+                            <img
+                              src="<?php echo e(Storage::url($category->photo)); ?>"
+                              alt=""
+                              class="w-100"
+                            />
+                        </div>
+                        <p class="categories-text">
+                            <?php echo e($category->name); ?>
+
+                        </p>
+                    </a>
                 </div>
-                <p class="categories-text">Art Painting</p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <a href="#" class="component-categories d-block">
-                <div class="categories-image">
-                  <img
-                    src="/images/categories-handcraft.svg"
-                    alt=""
-                    class="w-100"
-                  />
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <div class="col-12 text-center py-5" 
+                    data-aos="fade-up"
+                    data-aos-delay="100">
+                    No Categories Found
                 </div>
-                <p class="categories-text">Handcraft</p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <a href="#" class="component-categories d-block">
-                <div class="categories-image">
-                  <img
-                    src="/images/categories-illustration.svg"
-                    alt=""
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">Illustration</p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <a href="#" class="component-categories d-block">
-                <div class="categories-image">
-                  <img
-                    src="/images/categories-creativeservices.svg"
-                    alt=""
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">Creative Services</p>
-              </a>
+            <?php endif; ?>
             </div>
         </div>
       </section>
@@ -92,151 +56,52 @@
           </div>
 
           <div class="row">
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-digitalillustration.jpg');
-                    "
-                  ></div>
+            <?php $incrementProduct = 0 ?>
+            <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <div
+                    class="col-6 col-md-4 col-lg-3"
+                    data-aos="fade-up"
+                    data-aos-delay="<?php echo e($incrementProduct+=100); ?>"
+                >
+                    <a href="<?php echo e(route('detail', $product->slug)); ?>" class="component-products d-block">
+                        <div class="products-thumbnail">
+                            <div
+                                class="products-image"
+                                style="
+                                    <?php if($product->galleries->count()): ?>
+                                        background-image: url('<?php echo e(Storage::url($product->galleries->first()->photos)); ?>')
+                                    <?php else: ?>
+                                        background-color: #eee
+                                    <?php endif; ?>
+                                "
+                            >
+                            </div>
+                        </div>
+                        <div class="products-text">
+                            <?php echo e($product->name); ?>
+
+                        </div>
+                        <div class="products-price">
+                            Rp. <?php echo number_format($product->price,0,',','.'); ?>
+                        </div>
+                    </a>
                 </div>
-                <div class="products-text">Digital Illustration</div>
-                <div class="products-price">Rp. 120.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-illustrationsingle.jpg');
-                    "
-                  ></div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <div class="col-12 text-center py-5" 
+                    data-aos="fade-up"
+                    data-aos-delay="100">
+                        No Products Found
                 </div>
-                <div class="products-text">Illustration Single</div>
-                <div class="products-price">Rp. 100.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-cartoonillustration.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Cartoon Illustration</div>
-                <div class="products-price">Rp. 120.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-foodart.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Food Art</div>
-                <div class="products-price">Rp. 75.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-birdontree.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Bird on Tree</div>
-                <div class="products-price">Rp. 200.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-petaleddflower.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Petaledd Flower</div>
-                <div class="products-price">Rp. 90.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="700"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-macramewall.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Macrame Wall Decoration</div>
-                <div class="products-price">Rp. 105.000</div>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-4 col-lg-3"
-              data-aos="fade-up"
-              data-aos-delay="800"
-            >
-              <a href="/details.html" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div
-                    class="products-image"
-                    style="
-                      background-image: url('/images/products-floraltextile.jpg');
-                    "
-                  ></div>
-                </div>
-                <div class="products-text">Floral Textile</div>
-                <div class="products-price">Rp. 60.000</div>
-              </a>
+            <?php endif; ?>
+          </div>
+
+          <div class="row">
+            <div class="col-12 mt-4">
+              <?php echo e($products->links()); ?>
+
             </div>
           </div>
+
         </div>
       </section>
     </div>
