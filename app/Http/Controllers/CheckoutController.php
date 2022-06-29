@@ -54,7 +54,11 @@ class CheckoutController extends Controller
         // uncomment syntax dibawah untuk test apakah checkout berhasil
         return dd($transaction);
 
-        
+        // Delete Cart Data
+        Cart::where('users_id', Auth::user()->id)->delete();
+
+
+
         // KONFIGURASI MIDTRANS
 
         // Set your Merchant Server Key
