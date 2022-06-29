@@ -27,8 +27,9 @@
           </div>
         </div>
       </section>
+
       <!-- Untuk section gallery photo -->
-      <section class="store-gallery" id="gallery">
+      <section class="store-gallery mb-3" id="gallery">
         <div class="container">
           <div class="row">
             <div class="col-lg-8" data-aos="zoom-in">
@@ -74,17 +75,30 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-8">
-                <h1>Macrame Wall Decoration</h1>
-                <div class="owner">By Anisa Ica</div>
-                <div class="price">Rp. 105.000</div>
+                <h1>{{ $product->name }}</h1>
+                <div class="owner">By {{ $product->user->store_name }}</div>
+                <div class="price">@currency($product->price)</div>
               </div>
               <div class="col-lg-2" data-aos="zoom-in">
-                <a
-                  href="/cart.html"
-                  class="btn btn-success px-4 text-white btn-block mb-3"
-                >
-                  Add to Cart</a
-                >
+                @auth
+                  <form action="#" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <button
+                    type="submit"
+                    class="btn btn-success px-4 text-white btn-block mb-3"
+                  >
+                    Add to Cart
+                  </button>
+                  </form>
+                @else
+                  <a
+                    href="{{ route('login') }}"
+                    class="btn btn-success px-4 text-white btn-block mb-3"
+                  >
+                    Login to Add
+                  </a>
+                @endauth
+               
               </div>
             </div>
           </div>
@@ -93,8 +107,7 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-lg-8">
-                <p>White and Black Wings Macrame</p>
-                <p>Wall Decoration</p>
+                {!! $product->description !!}
               </div>
             </div>
           </div>
@@ -169,22 +182,12 @@
         data: {
           activePhoto: 0,
           photos: [
-            {
-              id: 1,
-              url: "/images/product-details-1.jpg",
-            },
-            {
-              id: 2,
-              url: "/images/product-details-2.jpg",
-            },
-            {
-              id: 3,
-              url: "/images/product-details-3.jpg",
-            },
-            {
-              id: 4,
-              url: "/images/product-details-4.jpg",
-            },
+            @foreach($product->galleries as $gallery)
+              {
+                id: {{ $gallery->id }},
+                url: "{{ Storage::url($gallery->photos) }}",
+              },
+            @endforeach
           ],
         },
         // memanggil data array foto yang active
