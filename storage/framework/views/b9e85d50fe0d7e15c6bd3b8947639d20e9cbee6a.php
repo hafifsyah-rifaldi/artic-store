@@ -81,7 +81,7 @@
               </div>
               <div class="col-lg-2" data-aos="zoom-in">
                 <?php if(auth()->guard()->check()): ?>
-                  <form action="#" method="POST" enctype="multipart/form-data">
+                  <form action="<?php echo e(route('detail-add', $product->id)); ?>" method="POST" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <button
                     type="submit"
