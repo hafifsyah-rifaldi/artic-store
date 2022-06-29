@@ -42,54 +42,68 @@
                 <!-- Desktop Menu -->
                 <ul class="navbar-nav d-none d-lg-flex">
                     <li class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link"
-                        id="navbarDropdown"
-                        role="button"
-                        data-toggle="dropdown"
-                    >
-                        <img
-                        src="/images/icon-user.png"
-                        alt=""
-                        class="rounded-circle mr-2 profile-picture"
-                        />
-                        Hi, <?php echo e(Auth::user()->name); ?>
+                        <a
+                            href="#"
+                            class="nav-link"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                        >
+                            <img
+                            src="/images/icon-user.png"
+                            alt=""
+                            class="rounded-circle mr-2 profile-picture"
+                            />
+                            Hi, <?php echo e(Auth::user()->name); ?>
 
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="<?php echo e(route('dashboard')); ?>" class="dropdown-item">
-                            Dashboard
                         </a>
-                        <a  href="<?php echo e(route('dashboard-settings-account')); ?>" 
-                            class="dropdown-item"
-                        >
-                            Settings
-                        </a>
-                        
-                        <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                        >
-                            Logout
-                        </a>
-                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none">
-                            <?php echo csrf_field(); ?>
-                        </form>
-                    </div>
+                        <div class="dropdown-menu">
+                            <a href="<?php echo e(route('dashboard')); ?>" class="dropdown-item">
+                                Dashboard
+                            </a>
+                            <a  href="<?php echo e(route('dashboard-settings-account')); ?>" 
+                                class="dropdown-item"
+                            >
+                                Settings
+                            </a>
+                            
+                            <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                            >
+                                Logout
+                            </a>
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none">
+                                <?php echo csrf_field(); ?>
+                            </form>
+                        </div>
                     </li>
                     <li class="nav-item">
-                    <a href="#" class="nav-link d-inline-block mt-2">
-                        <img src="/images/icon-cart-empty.svg" alt="" />
-                    </a>
+                        <a href="<?php echo e(route('cart')); ?>" class="nav-link d-inline-block mt-2">
+                            <?php
+                                $carts = \App\Models\Cart::where('users_id', Auth::user()->id)->count();
+                            ?>
+                            <?php if($carts > 0): ?>
+                                <img src="/images/icon-cart-filled.svg" alt="" />
+                                <div class="card-badge"><?php echo e($carts); ?></div>
+                            <?php else: ?>
+                                <img src="/images/icon-cart-empty.svg" alt="" />
+                            <?php endif; ?>
+                            
+                        </a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav d-block d-lg-none">
                     <li class="nav-item">
-                    <a href="#" class="nav-link"> Hi, Hafif </a>
+                        <a href="<?php echo e(route('dashboard')); ?>" class="nav-link"> 
+                            Hi, <?php echo e(Auth::user()->name); ?>
+
+                        </a>
                     </li>
                     <li class="nav-item">
-                    <a href="#" class="nav-link d-inline-block"> Cart </a>
+                        <a href="<?php echo e(route('cart')); ?>" class="nav-link d-inline-block"> 
+                            Cart 
+                        </a>
                     </li>
                 </ul>
             <?php endif; ?>
