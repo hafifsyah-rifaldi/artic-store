@@ -42,66 +42,37 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td style="width: 20%">
-                      <img
-                        src="/images/product-cart-1.jpg"
-                        alt=""
-                        class="cart-image"
-                      />
-                    </td>
-                    <td style="width: 35%">
-                      <div class="product-title">Macrame Wall Decoration</div>
-                      <div class="product-subtitle">by Anisa Ica</div>
-                    </td>
-                    <td style="width: 35%">
-                      <div class="product-title">Rp. 105.000</div>
-                      <div class="product-subtitle">IDR</div>
-                    </td>
-                    <td style="width: 20%">
-                      <a href="#" class="btn btn-remove-cart">Remove</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 20%">
-                      <img
-                        src="/images/product-cart-2.jpg"
-                        alt=""
-                        class="cart-image"
-                      />
-                    </td>
-                    <td style="width: 35%">
-                      <div class="product-title">Illustration Single</div>
-                      <div class="product-subtitle">by Salsa Tifani</div>
-                    </td>
-                    <td style="width: 35%">
-                      <div class="product-title">Rp. 100.000</div>
-                      <div class="product-subtitle">IDR</div>
-                    </td>
-                    <td style="width: 20%">
-                      <a href="#" class="btn btn-remove-cart">Remove</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 20%">
-                      <img
-                        src="/images/product-cart-3.jpg"
-                        alt=""
-                        class="cart-image"
-                      />
-                    </td>
-                    <td style="width: 35%">
-                      <div class="product-title">Bird On Tree</div>
-                      <div class="product-subtitle">by Mc Gill</div>
-                    </td>
-                    <td style="width: 35%">
-                      <div class="product-title">Rp. 200.000</div>
-                      <div class="product-subtitle">IDR</div>
-                    </td>
-                    <td style="width: 20%">
-                      <a href="#" class="btn btn-remove-cart">Remove</a>
-                    </td>
-                  </tr>
+                  <?php $__currentLoopData = $carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                      <td style="width: 20%">
+                        <?php if($cart->product->galleries): ?>
+                            <img
+                              src="<?php echo e(Storage::url($cart->product->galleries->first()->photos)); ?>"
+                              alt=""
+                              class="cart-image"
+                            />
+                        <?php endif; ?>
+                      </td>
+                      <td style="width: 35%">
+                        <div class="product-title"><?php echo e($cart->product->name); ?></div>
+                        <div class="product-subtitle">by <?php echo e($cart->product->user->store_name); ?></div>
+                      </td>
+                      <td style="width: 35%">
+                        <div class="product-title">Rp. <?php echo number_format($cart->product->price,0,',','.'); ?></div>
+                        <div class="product-subtitle">IDR</div>
+                      </td>
+                      <td style="width: 20%">
+                        <form action="<?php echo e(route('cart-delete', $cart->id )); ?>" method="POST">
+                          <?php echo method_field('DELETE'); ?>
+                          <?php echo csrf_field(); ?>
+                          <button type="submit" class="btn btn-remove-cart">
+                            Remove
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  
                 </tbody>
               </table>
             </div>
