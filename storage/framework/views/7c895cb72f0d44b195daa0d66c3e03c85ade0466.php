@@ -179,26 +179,14 @@
               </div>
             </div>
             <div class="row" data-aos="fade-up" data-aos-delay="200">
-              <div class="col-4 col-md-2">
-                <div class="product-title">Rp. 0</div>
-                <div class="product-subtitle">Tax</div>
-              </div>
-              <div class="col-4 col-md-3">
-                <div class="product-title">Rp. 0</div>
-                <div class="product-subtitle">Product Insurance</div>
-              </div>
-              <div class="col-4 col-md-2">
-                <div class="product-title">Rp. 0</div>
-                <div class="product-subtitle">Ship to Jakarta</div>
-              </div>
-              <div class="col-4 col-md-2">
+              <div class="col-md-8">
                 <div class="product-title text-success">Rp. <?php echo number_format($totalPrice ?? 0,0,',','.'); ?></div>
-                <div class="product-subtitle">Total</div>
+                <div class="product-subtitle">Total Price</div>
               </div>
-              <div class="col-8 col-md-3">
+              <div class="col-md-4">
                 <button
                   type="submit"
-                  class="btn btn-success mt-4 px-4 btn-block"
+                  class="btn btn-success mt-4 px-4 btn-block "
                   >Checkout Now
                 </button>
               </div>
