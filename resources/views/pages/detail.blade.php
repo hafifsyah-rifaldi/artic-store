@@ -113,58 +113,6 @@
           </div>
         </section>
 
-        <section class="store-review">
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-8 mt-3 mb-3">
-                <h5>Customer Review (3)</h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-lg-8">
-                <ul class="list-unstyled">
-                  <li class="media">
-                    <img
-                      src="/images/icons-testimonial-1.png"
-                      alt=""
-                      class="mr-3 rounded-circle"
-                    />
-                    <div class="media-body">
-                      <h5 class="mt-2 mb-1">Moere Elve</h5>
-                      I was so excited to get my wall hanging. It is so perfect,
-                      in design and size. I love it
-                    </div>
-                  </li>
-                  <li class="media">
-                    <img
-                      src="/images/icons-testimonial-2.png"
-                      alt=""
-                      class="mr-3 rounded-circle"
-                    />
-                    <div class="media-body">
-                      <h5 class="mt-2 mb-1">Amanda C</h5>
-                      This piece is gorgeous. The quality is excellent, it looks
-                      exactly as described, and I actually like it even more
-                      than I thought I would. Adds a beautiful dimension to our
-                      room.
-                    </div>
-                  </li>
-                  <li class="media">
-                    <img
-                      src="/images/icons-testimonial-3.png"
-                      alt=""
-                      class="mr-3 rounded-circle"
-                    />
-                    <div class="media-body">
-                      <h5 class="mt-2 mb-1">Eleanor L</h5>
-                      Beautiful hand made macrame piece for our great room wall.
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
 @endsection
