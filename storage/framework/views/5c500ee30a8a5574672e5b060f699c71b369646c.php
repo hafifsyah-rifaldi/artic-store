@@ -54,8 +54,8 @@
               Categories
             </a>
              <a
-              href="#"
-              class="list-group-item list-group-item-action"
+              href="<?php echo e(route('transaction.index')); ?>"
+              class="list-group-item list-group-item-action <?php echo e((request()->is('admin/transaction')) ? 'active' : ''); ?>"
             >
               Transactions
             </a>
