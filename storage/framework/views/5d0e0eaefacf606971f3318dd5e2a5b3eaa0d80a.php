@@ -1,3 +1,7 @@
+<?php $__env->startSection('title'); ?>
+    ARTiC - Login
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <div class="page-content page-auth">
     <div class="section-store-auth" data-aos="fade-up">
