@@ -12,7 +12,7 @@ data-aos="fade-up"
 >
 <div class="container-fluid">
     <div class="dashboard-heading">
-    <h2 class="dashboard-title">#STORE0839</h2>
+    <h2 class="dashboard-title">#<?php echo e($transaction->code); ?></h2>
     <p class="dashboard-subtitle">Transactions Details</p>
     </div>
     <div class="dashboard-content" id="transactionDetails">
@@ -23,7 +23,7 @@ data-aos="fade-up"
             <div class="row">
                 <div class="col-12 col-md-4">
                 <img
-                    src="/images/product-details-dashboard.png"
+                    src="<?php echo e(Storage::url($transaction->product->galleries->first()->photos ?? '')); ?>"
                     class="w-100 mb-3"
                     alt=""
                 />
@@ -32,40 +32,45 @@ data-aos="fade-up"
                 <div class="row">
                     <div class="col-12 col-md-6">
                     <div class="product-title">Customer Name</div>
-                    <div class="product-subtitle">Mc Gill</div>
+                    <div class="product-subtitle"><?php echo e($transaction->transaction->user->name); ?></div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Product Name</div>
-                    <div class="product-subtitle">Bird On Tree</div>
+                    <div class="product-subtitle"><?php echo e($transaction->product->name); ?></div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">
                         Date of Transaction
                     </div>
                     <div class="product-subtitle">
-                        26 Maret, 2022
+                        <?php echo e($transaction->created_at); ?>
+
                     </div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Payment Status</div>
                     <div class="product-subtitle text-danger">
-                        Pending
+                        <?php echo e($transaction->transaction->transaction_status); ?>
+
                     </div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Total Amount</div>
-                    <div class="product-subtitle">Rp. 200.000</div>
+                    <div class="product-subtitle">Rp. <?php echo number_format($transaction->transaction->total_price,0,',','.'); ?> </div>
                     </div>
                     <div class="col-12 col-md-6">
-                    <div class="product-title">Mobile</div>
+                    <div class="product-title">Phone Number</div>
                     <div class="product-subtitle">
-                        +628 2020 11111
+                        <?php echo e($transaction->transaction->user->phone_number); ?>
+
                     </div>
                     </div>
                 </div>
                 </div>
             </div>
-            <div class="row">
+           <form action="<?php echo e(route('dashboard-transaction-update', $transaction->id)); ?>" method="POST" enctype="multipart/form-data">
+            <?php echo csrf_field(); ?>
+             <div class="row">
                 <div class="col-12 mt-4">
                 <h5>Shipping Information</h5>
                 </div>
@@ -73,34 +78,35 @@ data-aos="fade-up"
                 <div class="row">
                     <div class="col-12 col-md-6">
                     <div class="product-title">Address I</div>
-                    <div class="product-subtitle">Damar</div>
+                    <div class="product-subtitle"><?php echo e($transaction->transaction->user->address_one); ?></div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Address II</div>
                     <div class="product-subtitle">
-                        Blok B2 No. 34
+                        <?php echo e($transaction->transaction->user->address_two); ?>
+
                     </div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Province</div>
-                    <div class="product-subtitle">West Java</div>
+                    <div class="product-subtitle"><?php echo e(App\Models\Province::find($transaction->transaction->user->provinces_id)->name); ?></div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">City</div>
-                    <div class="product-subtitle">Bekasi</div>
+                    <div class="product-subtitle"><?php echo e(App\Models\Regency::find($transaction->transaction->user->regencies_id)->name); ?></div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Postal Code</div>
-                    <div class="product-subtitle">17148</div>
+                    <div class="product-subtitle"><?php echo e($transaction->transaction->user->zip_code); ?></div>
                     </div>
                     <div class="col-12 col-md-6">
                     <div class="product-title">Country</div>
-                    <div class="product-subtitle">Indonesia</div>
+                    <div class="product-subtitle"><?php echo e($transaction->transaction->user->country); ?></div>
                     </div>
                     <div class="col-12 col-md-3">
                     <div class="product-title">Shipping Status</div>
                     <select
-                        name="status"
+                        name="shipping_status"
                         id="status"
                         class="form-control"
                         v-model="status"
@@ -142,6 +148,7 @@ data-aos="fade-up"
                 </button>
                 </div>
             </div>
+           </form>
             </div>
         </div>
         </div>
@@ -157,8 +164,8 @@ data-aos="fade-up"
       var transactionDetails = new Vue({
         el: "#transactionDetails",
         data: {
-          status: "SHIPPING",
-          resi: "JNE20839149021029301231",
+          status: "<?php echo e($transaction->shipping_status); ?>",
+          resi: "<?php echo e($transaction->resi); ?>",
         },
       });
     </script>
