@@ -1,3 +1,7 @@
+<?php $__env->startSection('title'); ?>
+    ARTiC - Register
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 
 <div class="page-content page-auth" id="register">
