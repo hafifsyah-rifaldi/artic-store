@@ -75,7 +75,7 @@
                                     <div class="col-md-1">
                                         <img
                                             src="<?php echo e(Storage::url($transaction->product->galleries->first()->photos ?? '')); ?>"
-                                            alt=""
+                                            class="w-75"
                                         />
                                     </div>
                                     <div class="col-md-4">
