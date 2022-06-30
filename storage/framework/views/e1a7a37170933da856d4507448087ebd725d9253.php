@@ -5,4 +5,5 @@
     <script>
       AOS.init();
     </script>
-    <script src="/script/navbar-scroll.js"></script><?php /**PATH C:\laragon\www\artic-store\resources\views/includes/script.blade.php ENDPATH**/ ?>
+    <script src="/script/navbar-scroll.js"></script>
+    <script src="/script/slide-carousel.js"></script><?php /**PATH C:\laragon\www\artic-store\resources\views/includes/script.blade.php ENDPATH**/ ?>
