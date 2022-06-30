@@ -99,7 +99,7 @@
                     class="form-control"
                     id="address_one"
                     name="address_one"
-                    value="Damar"
+                    value=""
                   />
                 </div>
               </div>
@@ -111,7 +111,7 @@
                     class="form-control"
                     id="address_two"
                     name="address_two"
-                    value="No. 101"
+                    value=""
                   />
                 </div>
               </div>
@@ -141,7 +141,7 @@
                     class="form-control"
                     id="zip_code"
                     name="zip_code"
-                    value="17148"
+                    value=""
                   />
                 </div>
               </div>
@@ -165,7 +165,7 @@
                     class="form-control"
                     id="phone_number"
                     name="phone_number"
-                    value="+628 2020 11111"
+                    value=""
                   />
                 </div>
               </div>
