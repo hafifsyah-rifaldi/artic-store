@@ -18,7 +18,8 @@
     <div class="dashboard-content">
       <div class="row">
         <div class="col-12">
-          <form action="">
+          <form action="<?php echo e(route('dashboard-settings-redirect', 'dashboard-settings-account')); ?>" method="POST" enctype="multipart/form-data" id="locations">
+            <?php echo csrf_field(); ?>
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -30,7 +31,7 @@
                         class="form-control"
                         id="name"
                         name="name"
-                        value="Hafifsyah Rifaldi"
+                        value="<?php echo e($user->name); ?>"
                       />
                     </div>
                   </div>
@@ -42,67 +43,61 @@
                         class="form-control"
                         id="email"
                         name="email"
-                        value="hafifsyah@live.com"
+                        value="<?php echo e($user->email); ?>"
                       />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="addressOne">Address 1</label>
+                      <label for="address_one">Address 1</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="addressOne"
-                        name="addressOne"
-                        value="Damar"
+                        id="address_one"
+                        name="address_one"
+                        value="<?php echo e($user->address_one); ?>"
                       />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="addressTwo">Address 2</label>
+                      <label for="address_two">Address 2</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="addressTwo"
-                        name="addressTwo"
-                        value="No. 101"
+                        id="address_two"
+                        name="address_two"
+                        value="<?php echo e($user->address_two); ?>"
                       />
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="province">Province</label>
-                      <select
-                        name="province"
-                        id="province"
-                        class="form-control"
-                      >
-                        <option value="West Java">West Java</option>
+                      <label for="provinces_id">Province</label>
+                      <select name="provinces_id" id="provinces_id" class="form-control" v-if="provinces" v-model="provinces_id">
+                        <option v-for="province in provinces" :value="province.id">{{ province.name }}</option>
                       </select>
+                      <select v-else class="form-control"></select>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="city">City</label>
-                      <select
-                        name="city"
-                        id="city"
-                        class="form-control"
-                      >
-                        <option value="Bekasi">Bekasi</option>
+                      <label for="regencies_id">City</label>
+                    <select name="regencies_id" id="regencies_id" class="form-control" v-if="regencies" v-model="regencies_id">
+                        <option v-for="regency in regencies" :value="regency.id">{{ regency.name }}</option>
                       </select>
+                      <select v-else class="form-control"></select>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="postalCode">Postal Code</label>
+                      <label for="zip_code">Postal Code</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="postalCode"
-                        name="postalCode"
-                        value="17148"
+                        id="zip_code"
+                        name="zip_code"
+                        value="<?php echo e($user->zip_code); ?>"
                       />
                     </div>
                   </div>
@@ -114,19 +109,19 @@
                         class="form-control"
                         id="country"
                         name="country"
-                        value="Indonesia"
+                        value="<?php echo e($user->country); ?>"
                       />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="Mobile">Mobile</label>
+                      <label for="phone_number">Phone Number</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="Mobile"
-                        name="Mobile"
-                        value="+628 2020 11111"
+                        id="phone_number"
+                        name="phone_number"
+                        value="<?php echo e($user->phone_number); ?>"
                       />
                     </div>
                   </div>
@@ -150,4 +145,52 @@
   </div>
 </div>
 <?php $__env->stopSection(); ?>
+
+
+<?php $__env->startPush('addon-script'); ?>
+    <script src="/vendor/vue/vue.js"></script>
+    <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var locations = new Vue({
+        el: "#locations",
+        // data yang akan dijalankan saat website dijalankan
+        mounted() {
+          AOS.init();
+          this.getProvincesData();
+        },
+        // untuk menyimpan data dari id nya sendiri
+        data: {
+          provinces: null,
+          regencies: null,
+          provinces_id: null,
+          regencies_id: null
+        },
+        // mengambil data
+        methods: {
+          getProvincesData() {
+            var self = this;
+            axios.get('<?php echo e(route('api-provinces')); ?>')
+              .then(function(response){
+                self.provinces = response.data;
+              })
+          },
+          getRegenciesData() {
+            var self = this;
+            axios.get('<?php echo e(url('api/regencies')); ?>/' + self.provinces_id)
+              .then(function(response){
+                self.regencies = response.data;
+              })
+          },
+        },
+        //ngeliat data jika ada perubahan data, maka akan melakukan sesuatu
+        watch: {
+          provinces_id: function(val, oldVal) {
+            this.regencies_id = null;
+            this.getRegenciesData();
+          }
+        }
+      });
+    </script>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\artic-store\resources\views/pages/dashboard-account.blade.php ENDPATH**/ ?>
