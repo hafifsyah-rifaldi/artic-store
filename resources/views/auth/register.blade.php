@@ -210,8 +210,8 @@
         },
         data() {
             return {
-                name: "Hafifsyah Rifaldi",
-                email: "hafifsyah@live.id",
+                name: "",
+                email: "",
                 is_store_open: true,
                 store_name: "",
                 email_unavailable: false
