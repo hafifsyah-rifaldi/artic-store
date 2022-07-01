@@ -12,7 +12,7 @@
     >
     <div class="container-fluid">
         <div class="dashboard-heading">
-        <h2 class="dashboard-title">Abstract Painting</h2>
+        <h2 class="dashboard-title">My Products</h2>
         <p class="dashboard-subtitle">Product Details</p>
         </div>
         <div class="dashboard-content">
@@ -40,7 +40,6 @@
                             type="text"
                             name="name"
                             class="form-control"
-                            value="Abstract Painting"
                             value="{{ $product->name }}"
                         />
                         </div>
@@ -52,9 +51,11 @@
                             type="number"
                             name="price"
                             class="form-control"
-                            value="200"
                             value="{{ $product->price }}"
                         />
+                        <p class="text-muted">
+                            Input nominal tanpa simbol apapun <br> (contoh: <b>10000</b> (sepuluh ribu))
+                        </p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -95,6 +96,9 @@
         <div class="col-12">
             <div class="card">
             <div class="card-body">
+                <p class="text-muted">
+                    Click <i>"Add Photo"</i> untuk menambah foto
+                </p>
                 <div class="row">
                  @foreach ($product->galleries as $gallery)
                 <div class="col-md-4">
