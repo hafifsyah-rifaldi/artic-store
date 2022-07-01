@@ -119,7 +119,12 @@
 
                     </a>
                     <div class="dropdown-menu">
-                      <a href="<?php echo e(route('logout')); ?>" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                      <a href="<?php echo e(route('logout')); ?>" 
+                      class="dropdown-item" 
+                      onclick="event.preventDefault(); 
+                      document.getElementById('logout-form').submit();">
+                        Logout
+                      </a>
                       <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none">
                             <?php echo csrf_field(); ?>
                       </form>

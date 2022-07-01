@@ -49,11 +49,7 @@
                             role="button"
                             data-toggle="dropdown"
                         >
-                            <img
-                            src="/images/icon-user.png"
-                            alt=""
-                            class="rounded-circle mr-2 profile-picture"
-                            />
+                            
                             Hi, <?php echo e(Auth::user()->name); ?>
 
                         </a>
