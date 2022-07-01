@@ -53,7 +53,7 @@
                                 Transaction
                             </div>
                             <div class="dashboard-card-subtitle">
-                               {{ number_format($customer) }}
+                               {{ number_format($transaction_count) }}
                             </div>
                         </div>
                     </div>

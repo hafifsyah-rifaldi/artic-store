@@ -54,7 +54,7 @@
                                 Transaction
                             </div>
                             <div class="dashboard-card-subtitle">
-                               <?php echo e(number_format($customer)); ?>
+                               <?php echo e(number_format($transaction_count)); ?>
 
                             </div>
                         </div>
