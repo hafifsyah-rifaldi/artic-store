@@ -44,7 +44,7 @@
                                         <label>Price</label>
                                         <input type="number" class="form-control" name="price" />
                                         <p class="text-muted">
-                                            Input nominal tanpa simbol apapun <br> (contoh: 10000 (sepuluh ribu))
+                                            Input nominal tanpa simbol apapun <br> (contoh: <b>10000</b> (sepuluh ribu))
                                         </p>
                                     </div>
                                 </div>
@@ -67,9 +67,10 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Thumbnails</label>
-                                        <input type="file" name="photo" class="form-control" />
+                                        <input type="file" name="photo" class="form-control" /><br>
                                         <p class="text-muted">
-                                            Kamu dapat memilih lebih dari satu file
+                                            <b>Upload satu foto terlebih dahulu dan save! </b><br>
+                                            Untuk menambah foto, edit pada <i>My Products</i> 
                                         </p>
                                     </div>
                                 </div>
