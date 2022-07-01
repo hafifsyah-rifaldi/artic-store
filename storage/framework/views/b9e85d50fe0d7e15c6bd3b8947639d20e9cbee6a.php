@@ -95,7 +95,8 @@
                     href="<?php echo e(route('login')); ?>"
                     class="btn btn-success px-4 text-white btn-block mb-3"
                   >
-                    Login to Add
+                    Login to <br>
+                    Add Cart
                   </a>
                 <?php endif; ?>
                

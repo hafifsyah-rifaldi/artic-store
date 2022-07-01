@@ -95,7 +95,8 @@
                     href="{{ route('login') }}"
                     class="btn btn-success px-4 text-white btn-block mb-3"
                   >
-                    Login to Add Cart
+                    Login to <br>
+                    Add Cart
                   </a>
                 @endauth
                
