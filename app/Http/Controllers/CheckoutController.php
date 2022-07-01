@@ -39,7 +39,7 @@ class CheckoutController extends Controller
         ]);
 
         foreach ($carts as $cart) {
-            $trx = 'TRX-' . mt_rand(00000, 99999);
+            $trx = 'ART-' . mt_rand(00000, 99999);
 
             TransactionDetail::create([
                 'transactions_id' => $transaction->id,
