@@ -31,7 +31,7 @@
           <div class="list-group list-group-flush">
             <a
               href="<?php echo e(route('admin-dashboard')); ?>"
-              class="list-group-item list-group-item-action"
+              class="list-group-item list-group-item-action <?php echo e((request()->is('admin')) ? 'active' : ''); ?>"
             >
               Dashboard
             </a>
@@ -102,6 +102,9 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Desktop Menu -->
                 <ul class="navbar-nav d-none d-lg-flex ml-auto">
+                  <li class="nav-item">
+                    <a href="<?php echo e(route('home')); ?>" class="nav-link">Home</a>
+                  </li>
                   <li class="nav-item dropdown">
                     <a
                       href="#"
@@ -110,11 +113,7 @@
                       role="button"
                       data-toggle="dropdown"
                     >
-                      <img
-                        src="/images/icon-user.png"
-                        alt=""
-                        class="rounded-circle mr-2 profile-picture"
-                      />
+                      
                       Hi, <?php echo e(Auth::user()->name); ?>
 
                     </a>
