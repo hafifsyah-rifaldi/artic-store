@@ -18,6 +18,15 @@
     <div class="dashboard-content">
         <div class="row">
             <div class="col-12">
+                <?php if($errors->any()): ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
                 <form action="<?php echo e(route('dashboard-product-store')); ?>" method="POST" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <input type="hidden" name="users_id" value="<?php echo e(Auth::user()->id); ?>">
@@ -34,6 +43,9 @@
                                     <div class="form-group">
                                         <label>Price</label>
                                         <input type="number" class="form-control" name="price" />
+                                        <p class="text-muted">
+                                            Input nominal tanpa simbol apapun <br> (contoh: 10000 (sepuluh ribu))
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

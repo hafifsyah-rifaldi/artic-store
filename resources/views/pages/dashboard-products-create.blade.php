@@ -43,6 +43,9 @@
                                     <div class="form-group">
                                         <label>Price</label>
                                         <input type="number" class="form-control" name="price" />
+                                        <p class="text-muted">
+                                            Input nominal tanpa simbol apapun <br> (contoh: 10000 (sepuluh ribu))
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
