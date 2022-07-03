@@ -18,10 +18,10 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item <?php echo e((request()->is('/*')) ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('home')); ?>" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo e((request()->is('categories*')) ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('categories')); ?>" class="nav-link">Categories</a>
                 </li>
                 <?php if(auth()->guard()->guest()): ?>
