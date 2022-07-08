@@ -105,11 +105,11 @@
                     <div class="form-group">
                       <label for="country">Country</label>
                       <input
+                        readonly
                         type="text"
                         class="form-control"
                         id="country"
                         name="country"
-                        disabled
                         value="<?php echo e($user->country); ?>"
                       />
                     </div>
