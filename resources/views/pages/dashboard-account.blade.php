@@ -109,6 +109,7 @@
                         class="form-control"
                         id="country"
                         name="country"
+                        disabled
                         value="{{ $user->country }}"
                       />
                     </div>
