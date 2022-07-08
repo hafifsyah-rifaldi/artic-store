@@ -153,6 +153,7 @@
                     class="form-control"
                     id="country"
                     name="country"
+                    disabled
                     value="Indonesia"
                   />
                 </div>
